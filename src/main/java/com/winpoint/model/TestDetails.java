@@ -31,9 +31,6 @@ public class TestDetails {
 	private Integer createdBy;
 	private Date createdDate;
 	
-	
-
-
 	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private List<UserProfile> userProfiles;	

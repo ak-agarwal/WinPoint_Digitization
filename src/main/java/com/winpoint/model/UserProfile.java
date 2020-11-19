@@ -19,6 +19,7 @@ public class UserProfile {
 //	redo fk
 	@Id
 	private Integer userId;
+	
 	private String firstName;
 	private String lastName;
 	private String emailId;
@@ -33,9 +34,11 @@ public class UserProfile {
 	private String password;
 	private String gender;
 	private Integer securityQuestionId;//
+	
 	private String securityQuestion;
 	private String securityAnswer;
 	private Integer userCategoryId;//
+	
 	private String occupation;
 	private String organization;
 	private String designation;
@@ -45,9 +48,16 @@ public class UserProfile {
 	private Integer createdBy;
 	private Date createDate;
 	private String timeSlotsId;//
+	
 	private Integer segmentTypeId;//
+	
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
+	
+	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<UserProfile> userProfile;	
+
 	
 	@ManyToOne(targetEntity = SecurityQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "securityQuestionId", referencedColumnName = "securityQuestionId")

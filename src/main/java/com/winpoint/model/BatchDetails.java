@@ -34,6 +34,10 @@ public class BatchDetails {
 	private Integer totalNumberOfLectures;//
 	private Integer segmentTypeId;//
 
+	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	private List<BatchDetails> batchDetails;
+	
 	@OneToMany(targetEntity = Course.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
 	private List<Course> courses;

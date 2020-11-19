@@ -28,7 +28,6 @@ public class Course {
 	private Date createdDate;
 	private Integer logoLocation;
 	
-	
 	@OneToMany(targetEntity = Course.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
 	private List<Course> courses;
@@ -41,7 +40,6 @@ public class Course {
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private List<CourseType> courseTypes;
 
-	
 	@OneToMany(targetEntity = EvaluationType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
 	private List<EvaluationType> evaluationTypes;

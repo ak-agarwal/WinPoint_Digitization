@@ -52,5 +52,13 @@ public class StudentCourseDetails {
 	@ManyToOne(targetEntity = GradingSystem.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "gradeId", referencedColumnName = "gradeId")
 	private List<ReminderType> gradeTypes;
+	
+	@ManyToOne(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<Course> course;
+	
+	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<UserProfile> userProfile;
 
 }

@@ -28,6 +28,10 @@ public class FacultySkills {
 	@JoinColumn(name = "facultyUserId", referencedColumnName = "facultyUserId")
 	private List<UserProfile> employeeCategories;
 	
+	@ManyToOne(targetEntity = FacultySkills.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "skillSetId", referencedColumnName = "skillSetId")
+	private List<FacultySkills> facultySkills;
+	
 	@ManyToOne(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
 	private List<SegmentType> segmentTypes;

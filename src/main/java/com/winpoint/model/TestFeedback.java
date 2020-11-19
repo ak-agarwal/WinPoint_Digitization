@@ -30,4 +30,7 @@ public class TestFeedback {
 	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
 	private List<FeedbackQuestions> feedbackQuestions;	
 
+	@ManyToOne(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private List<UserTestDetails> userTestDetails;	
 }

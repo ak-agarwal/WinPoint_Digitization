@@ -28,5 +28,9 @@ public class ToolTips {
 	@ManyToOne(targetEntity = CourseType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private List<CourseType> CourseTypes;	
+	
+	@ManyToOne(targetEntity = ToolTips.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "toolTipId", referencedColumnName = "toolTipId")
+	private List<ToolTips> toolTips;	
 
 }

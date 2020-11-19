@@ -1,9 +1,14 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -13,7 +18,7 @@ public class EnquiryDetails {
 //	creation of fk
 //	schema checked
 	@Id
-	private Integer enquiryId;
+	private Integer enquiryId;	
 	private String firstName;
 	private String lastName;
 	private String emailId;
@@ -42,4 +47,17 @@ public class EnquiryDetails {
 	private Integer segementTypeId;
 	private String suggestion;
 	private Integer activeStatus;
+	
+	@ManyToOne(targetEntity = EnquiryDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "enquiryId", referencedColumnName = "enquiryId")
+	private List<EnquiryDetails> enquiryDetails;
+	
+	@ManyToOne(targetEntity = TimeSlots.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
+	private List<TimeSlots> timeSlots;
+	
+	@ManyToOne(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "segementTypeId", referencedColumnName = "segementTypeId")
+	private List<SegmentType> segmentType;
+	
 }

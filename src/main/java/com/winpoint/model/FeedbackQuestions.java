@@ -24,6 +24,10 @@ public class FeedbackQuestions {
 	private Integer createdBy;
 	private Date createdDate;
 	
+	@ManyToOne(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
+	private List<FeedbackQuestions> feedbackQuestions;
+	
 	@ManyToOne(targetEntity = FeedbackCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
 	private List<FeedbackCategory> feedbackCategories;

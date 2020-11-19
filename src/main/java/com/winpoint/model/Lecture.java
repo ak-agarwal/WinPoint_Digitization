@@ -27,6 +27,10 @@ public class Lecture {
 	private String comments;
 	private String absentees;
 	
+	@ManyToOne(targetEntity = Lecture.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "lectureId", referencedColumnName = "lectureId")
+	private List<Lecture> lecture;
+	
 	@ManyToOne(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
 	private List<BatchDetails> batchDetails;
