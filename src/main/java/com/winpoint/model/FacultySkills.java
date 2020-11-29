@@ -6,9 +6,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -16,7 +16,6 @@ import lombok.Data;
 @Data
 public class FacultySkills {
 //	checked
-	@Id
 	private Integer facultyUserId;
 	private String skillSetId;
 	private Integer createdBy;
@@ -24,20 +23,12 @@ public class FacultySkills {
 	private String segmentTypeId;
 	private String timeSlotsId;
 	
-	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "facultyUserId", referencedColumnName = "facultyUserId")
+	
+	jnf4
+	@ManyToOne
+	private UserProfile UserProfile;
+	
+	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "facultyUserId", referencedColumnName = "user")
 	private List<UserProfile> employeeCategories;
-	
-	@ManyToOne(targetEntity = FacultySkills.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "skillSetId", referencedColumnName = "skillSetId")
-	private List<FacultySkills> facultySkills;
-	
-	@ManyToOne(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private List<SegmentType> segmentTypes;
-	
-	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-	private List<TimeSlots> timesSlots;
-	
 }

@@ -1,16 +1,12 @@
 package com.winpoint.model;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
-//checked
+//checked//
 @Entity
 @Data
 public class Course {
@@ -28,19 +24,43 @@ public class Course {
 	private Date createdDate;
 	private Integer logoLocation;
 	
-	@OneToMany(targetEntity = Course.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private List<Course> courses;
 	
-	@OneToMany(targetEntity = Streams.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
-	private List<Streams> streams;
+//	@OneToMany(targetEntity = Course.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private List<Course> courses;
 	
-	@OneToMany(targetEntity = CourseType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
-	private List<CourseType> courseTypes;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@ManyToOne
+	private Streams stream;
+	
+	
+//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
+//	private List<Course> Course;
+	
+	
+	
+	@ManyToOne
+	private CourseType courseType;
+	
+//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
+//	private List<Course> Course;
+	
+	
+	
+	@ManyToOne
+	private EvaluationType EvaluationType;
 
-	@OneToMany(targetEntity = EvaluationType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
-	private List<EvaluationType> evaluationTypes;
+//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
+//	private List<Course> Course;
 }

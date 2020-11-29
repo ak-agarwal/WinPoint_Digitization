@@ -9,8 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import org.aspectj.weaver.ast.Test;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -31,16 +30,16 @@ public class TestDetails {
 	private Integer createdBy;
 	private Date createdDate;
 	
-	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private List<UserProfile> userProfiles;	
+//	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private List<UserProfile> userProfiles;	
 	
-	@ManyToOne(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<UserTestDetails> userTestDetails;	
+	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<Course> userTestDetails;	
 	
-	@ManyToOne(targetEntity = Test.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "testId", referencedColumnName = "testId")
-	private List<Test> tests;	
+	@ManyToOne(targetEntity = EvaluationType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
+	private List<EvaluationType> EvaluationType;	
 	
 }

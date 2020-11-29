@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -27,13 +28,15 @@ public class Lecture {
 	private String comments;
 	private String absentees;
 	
-	@ManyToOne(targetEntity = Lecture.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "lectureId", referencedColumnName = "lectureId")
-	private List<Lecture> lecture;
+
 	
-	@ManyToOne(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
-	private List<BatchDetails> batchDetails;
+	
+	@ManyToOne
+	private BatchDetails BatchDetails;
+	
+//	@OneToMany(targetEntity = Lecture.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+//	private List<Lecture> Lecture;
 	
 	
 }

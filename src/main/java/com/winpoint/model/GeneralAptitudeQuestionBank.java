@@ -9,13 +9,14 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
 @Entity
 @Data
 public class GeneralAptitudeQuestionBank {
-//	checked
+//	checked//
 //	fk
 	@Id
 	private String questionId;
@@ -34,20 +35,39 @@ public class GeneralAptitudeQuestionBank {
 	private String createdBy;
 	private Date createdDate;
 	
-	@ManyToOne(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
-	private List<GeneralAptitudeQuestionBank> generalAptitudeQuestionBank;
+//	@ManyToOne(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
+//	private List<GeneralAptitudeQuestionBank> generalAptitudeQuestionBank;
 	
-	@ManyToOne(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private List<Course> course;
 	
-	@ManyToOne(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-	private List<Topics> topics;
 	
-	@ManyToOne(targetEntity = DifficultyLevel.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private List<DifficultyLevel> difficultyLevel;
+	
+	@ManyToOne
+	private Course Course;
+	
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	
+	
+	
+	
+	@ManyToOne
+	private Topics Topics;
+	
+	
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
+//	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	
+	
+	
+	@ManyToOne
+	private DifficultyLevel DifficultyLevel;
+	
+	
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
+//	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
 	
 }

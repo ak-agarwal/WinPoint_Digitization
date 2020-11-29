@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
 @Entity
 @Data
 public class StudentCourseFeesBean {
+	
 	private Integer userId;//
 	private String fisrtName;
 	private String lastName;
@@ -21,11 +23,21 @@ public class StudentCourseFeesBean {
 	private String feeStatus;
 	private Integer fees;
 	
-	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@ManyToOne
+	private UserProfile UserProfile;
+	
+	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private List<UserProfile> userProfiles;	
 	
-	@ManyToOne(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	
+	@ManyToOne
+	private Course Course;
+	
+	
+	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
 	private List<Course> courses;	
 	

@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -18,56 +19,84 @@ public class RevenueDetail {
 //	fk
 	@Id
 	private String revenueDetailId;
-	
 	private String revenueTypeId;
-	
 	private String receiptNumber;
 	private String payerDescription;
 	private String courseId;
-	
 	private String batchId;
-	
 	private String revenueAmount;
 	private String paymentModeId;
-	
 	private String chequeNumber;
 	private String segmentTypeId;
-	
 	private String organizationId;
-	
 	private String userId;
-	
 	private String receiveDate;
+
 	
-	@ManyToOne(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "revenueDetailId", referencedColumnName = "revenueDetailId")
-	private List<RevenueDetail> revenueDetail;
+	@ManyToOne
+	private RevenueType RevenueType;
 	
-	@ManyToOne(targetEntity = RevenueType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = RevenueType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
-	private List<RevenueType> RevenueType;
+	private List<RevenueType> RevenueTypes;
+
 	
-	@ManyToOne(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@ManyToOne
+	private Course Course;
+	
+	
+	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
 	private List<Course> course;
+
 	
-	@ManyToOne(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@ManyToOne
+	private BatchDetails BatchDetails;
+	
+	
+	@OneToMany(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
 	private List<BatchDetails> batchDetails;
+
 	
-	@ManyToOne(targetEntity = PaymentMode.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@ManyToOne
+	private PaymentMode PaymentMode;
+	
+	
+	@OneToMany(targetEntity = PaymentMode.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "paymentModeId", referencedColumnName = "paymentModeId")
 	private List<PaymentMode> paymentMode;
+
 	
-	@ManyToOne(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@ManyToOne
+	private SegmentType SegmentType;
+	
+	
+	@OneToMany(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
 	private List<SegmentType> segmentType;
+
 	
-	@ManyToOne(targetEntity = Organization.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	
+	@ManyToOne
+	private Organization Organization;
+	
+	@OneToMany(targetEntity = Organization.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "organizationId", referencedColumnName = "organizationId")
 	private List<Organization> organization;
+
 	
-	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@ManyToOne
+	private UserProfile UserProfile;
+	
+	
+	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private List<UserProfile> userProfile;
 

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -54,24 +54,24 @@ public class UserProfile {
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
 	
-	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private List<UserProfile> userProfile;	
+//	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private List<UserProfile> userProfile;	
 
 	
-	@ManyToOne(targetEntity = SecurityQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = SecurityQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "securityQuestionId", referencedColumnName = "securityQuestionId")
 	private List<SecurityQuestions> securityQuestions;	
 
-	@ManyToOne(targetEntity = UserCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = UserCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "userCategoryId", referencedColumnName = "userCategoryId")
 	private List<UserCategory> UserCategories;	
 
-	@ManyToOne(targetEntity = TimeSlots.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = TimeSlots.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
 	private List<TimeSlots> timeSlots;	
 	
-	@ManyToOne(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
 	private List<SegmentType> SegmentTypes;	
 
