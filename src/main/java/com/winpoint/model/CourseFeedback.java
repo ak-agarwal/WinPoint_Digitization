@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
@@ -15,6 +16,9 @@ import lombok.Data;
 @Entity
 @Data
 public class CourseFeedback {
+	
+	@Id
+	private Integer courseFeedbackId;
 	private Integer userId;		//this both two are composite key s
 	private Integer courseId;		
 	private Integer feedbackQuestionId;

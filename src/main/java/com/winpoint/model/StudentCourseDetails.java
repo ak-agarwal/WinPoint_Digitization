@@ -6,7 +6,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -17,6 +19,8 @@ public class StudentCourseDetails {
 //	checked
 //	fk
 //	comp fk
+	@Id
+	private Integer studentCourseDetailsId;
 	private Integer userId;//
 	private Integer courseId;// composite pk
 	private Integer batchId;//
@@ -41,10 +45,6 @@ public class StudentCourseDetails {
 	private int percentageAttendance;
 	private BatchDetails batchDetails;
 
-//	@ManyToOne(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
-//	private List<BatchDetails> batches;
-
 	@OneToMany(targetEntity = ReminderType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "reminderTypeId", referencedColumnName = "reminderTypeId")
 	private List<ReminderType> remainderTypes;
@@ -52,13 +52,12 @@ public class StudentCourseDetails {
 	@OneToMany(targetEntity = GradingSystem.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "gradeId", referencedColumnName = "gradeId")
 	private List<ReminderType> gradeTypes;
-	
-//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-//	private List<Course> course;
-	
-	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private List<UserProfile> userProfile;
+
+	@ManyToOne
+	private Course Course;
+	@ManyToOne
+	private UserProfile UserProfile;
+	@ManyToOne
+	private BatchDetails BatchDetails;
 
 }

@@ -1,9 +1,11 @@
 package com.example.repository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.winpoint.model.ExpenseType;
 
-public interface ExpenseTypeRepository extends CrudRepository<ExpenseType, Integer>{
+@Repository
+public interface ExpenseTypeRepository extends JpaRepository<ExpenseType, Integer>{
 
 }
 

@@ -1,9 +1,12 @@
 package com.example.repository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.winpoint.model.StudentTestResultComputerNetwork_CRT;
 
-public interface StudentTestResultComputerNetwork_CRT_Repository extends CrudRepository<StudentTestResultComputerNetwork_CRT, Integer>{
+
+@Repository
+public interface StudentTestResultComputerNetwork_CRT_Repository extends JpaRepository<StudentTestResultComputerNetwork_CRT, Integer>{
 
 }
 

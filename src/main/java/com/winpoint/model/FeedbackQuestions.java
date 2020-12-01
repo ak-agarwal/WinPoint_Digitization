@@ -24,24 +24,19 @@ public class FeedbackQuestions {
 	private Integer feedbackQuestionTypeId;
 	private Integer createdBy;
 	private Date createdDate;
+
 	
 	
-//	@ManyToOne(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
-//	private List<FeedbackQuestions> feedbackQuestions;
 	
+	@OneToMany(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
+	private List<TestFeedback> TestFeedback;
+	
+	/////////////////
 	@ManyToOne
 	private FeedbackCategory FeedbackCategory;
-	
-//	@OneToMany(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
-//	private List<FeedbackQuestions> FeedbackQuestions;
-	
-	
+
 	@ManyToOne
 	private FeedbackQuestionType FeedbackQuestionType;
-	
-//	@OneToMany(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackQuestionTypeId", referencedColumnName = "feedbackQuestionTypeId")
-//	private List<FeedbackQuestions> FeedbackQuestions;
+
 }

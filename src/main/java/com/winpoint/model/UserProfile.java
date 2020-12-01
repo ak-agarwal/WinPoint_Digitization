@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -19,7 +20,6 @@ public class UserProfile {
 //	redo fk
 	@Id
 	private Integer userId;
-	
 	private String firstName;
 	private String lastName;
 	private String emailId;
@@ -33,12 +33,10 @@ public class UserProfile {
 	private String photoLocation;
 	private String password;
 	private String gender;
-	private Integer securityQuestionId;//
-	
+	private Integer securityQuestionId;
 	private String securityQuestion;
 	private String securityAnswer;
-	private Integer userCategoryId;//
-	
+	private Integer userCategoryId;
 	private String occupation;
 	private String organization;
 	private String designation;
@@ -47,33 +45,51 @@ public class UserProfile {
 	private Integer experience;
 	private Integer createdBy;
 	private Date createDate;
-	private String timeSlotsId;//
-	
-	private Integer segmentTypeId;//
-	
+	private String timeSlotsId;
+	private Integer segmentTypeId;
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
-	
-//	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+	@OneToMany(targetEntity = StudentCourseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<StudentCourseDetails> StudentCourseDetails;
+
+	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "facultyUserId", referencedColumnName = "userId")
+	private List<UserProfile> employeeCategories;
+
+	@OneToMany(targetEntity = EmployeeDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<EmployeeDetails> EmployeeDetails;
+
+	@OneToMany(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<RevenueDetail> RevenueDetail;
+
+//	@OneToMany(targetEntity = StudentCourseFeesBean.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private List<UserProfile> userProfile;	
+//	private List<StudentCourseFeesBean> StudentCourseFeesBean;
 
-	
-	@OneToMany(targetEntity = SecurityQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "securityQuestionId", referencedColumnName = "securityQuestionId")
-	private List<SecurityQuestions> securityQuestions;	
+	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<UserTestDetails> UserTestDetails;
 
-	@OneToMany(targetEntity = UserCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userCategoryId", referencedColumnName = "userCategoryId")
-	private List<UserCategory> UserCategories;	
+	@OneToMany(targetEntity = UserStudent.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<UserStudent> UserStudent;
 
-	@OneToMany(targetEntity = TimeSlots.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-	private List<TimeSlots> timeSlots;	
-	
-	@OneToMany(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private List<SegmentType> SegmentTypes;	
+////////////////////////////
 
-	
+	@ManyToOne
+	private SecurityQuestions SecurityQuestions;
+
+	@ManyToOne
+	private UserCategory UserCategory;
+
+	@ManyToOne
+	private TimeSlots TimeSlots;
+
+	@ManyToOne
+	private SegmentType SegmentType;
+
 }

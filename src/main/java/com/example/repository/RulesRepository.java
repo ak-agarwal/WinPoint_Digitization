@@ -1,9 +1,12 @@
 package com.example.repository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.winpoint.model.Rules;
 
-public interface RulesRepository extends CrudRepository<Rules, Integer>{
+
+@Repository
+public interface RulesRepository extends JpaRepository<Rules, Integer>{
 
 }
 	

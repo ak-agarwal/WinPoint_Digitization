@@ -1,11 +1,17 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
+
 //checked//
 @Entity
 @Data
@@ -24,43 +30,63 @@ public class Course {
 	private Date createdDate;
 	private Integer logoLocation;
 	
+	@OneToMany(targetEntity = StudentCourseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<StudentCourseDetails> StudentCourseDetails;
+
+	@OneToMany(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<BatchDetails> BatchDetails;
+
+	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<CoursePlans> CoursePlans;
+
+	@OneToMany(targetEntity = ExpenseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<ExpenseDetails> ExpenseDetails;
 	
-//	@OneToMany(targetEntity = Course.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	
+	
+	@OneToMany(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<RevenueDetail> RevenueDetail;
+	
+	@OneToMany(targetEntity = SoftSkillsQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
+	
+//	@OneToMany(targetEntity = StudentCourseFeesBean.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-//	private List<Course> courses;
+//	private List<StudentCourseFeesBean> StudentCourseFeesBean;
 	
 	
+	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<TechnicalQuestionBank> TechnicalQuestionBank;
 	
 	
+	@OneToMany(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<Topics> Topics;
 	
-	
-	
-	
-	
-	
+	@OneToMany(targetEntity = TestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<TestDetails> TestDetails;	
+
+	///////////////////////////////
+
 	@ManyToOne
 	private Streams stream;
-	
-	
-//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
-//	private List<Course> Course;
-	
-	
-	
+
 	@ManyToOne
 	private CourseType courseType;
-	
-//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
-//	private List<Course> Course;
-	
-	
-	
+
 	@ManyToOne
 	private EvaluationType EvaluationType;
 
-//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
-//	private List<Course> Course;
 }

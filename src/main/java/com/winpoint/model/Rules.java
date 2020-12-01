@@ -17,9 +17,7 @@ public class Rules {
 	private Integer createdBy;
 	private Date createdDate;
 	
-//	@ManyToOne(targetEntity = Rules.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "rulesId", referencedColumnName = "rulesId")
-//	private List<Rules> rules;
+
 
 	
 }

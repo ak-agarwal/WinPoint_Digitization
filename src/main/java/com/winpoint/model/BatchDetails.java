@@ -21,7 +21,7 @@ public class BatchDetails {
 //	checked//
 	@Id
 	private Integer batchId;
-	private Integer courseId;	
+	private Integer courseId;
 	private Integer facultyUserId;
 	private Date beginDate;
 	private Date endDate;
@@ -30,7 +30,7 @@ public class BatchDetails {
 	private String batchName;
 	private Integer batchTime;
 	private Integer currentLectureNumber;
-	private String lectureDuration; 
+	private String lectureDuration;
 //	private String facultyName;		//this is not there in the original table
 	private Integer totalNumberOfLectures;//
 	private Integer segmentTypeId;//
@@ -38,39 +38,31 @@ public class BatchDetails {
 //	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
 //	private List<BatchDetails> batchDetails;
-	
+
+	@OneToMany(targetEntity = StudentCourseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	private List<StudentCourseDetails> StudentCourseDetails;
+
+	@OneToMany(targetEntity = ExpenseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	private List<ExpenseDetails> ExpenseDetails;
+
+	@OneToMany(targetEntity = Lecture.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	private List<Lecture> Lecture;
+
+	@OneToMany(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	private List<RevenueDetail> RevenueDetail;
+
+	/////////////////////////
 	@ManyToOne
 	private Course course;
-	
-//	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-//	private List<BatchDetails> BatchDetails;
-	//          
-	
-	
+
 	@ManyToOne
 	private FacultySkills facultySkills;
-	
-//	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "facultyUserId", referencedColumnName = "facultyId")
-//	private List<BatchDetails> BatchDetails;
-	
-	
-	
+
 	@ManyToOne
 	private SegmentType segmentType;
-	
-	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private List<BatchDetails> BatchDetails;
+
 }
-
-
-
-
-
-
-
-
-
-

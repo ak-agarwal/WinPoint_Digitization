@@ -1,9 +1,11 @@
 package com.example.repository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.winpoint.model.UserProfile;
 
-public interface UserProfileRepository extends CrudRepository<UserProfile, Integer>{
+@Repository
+public interface UserProfileRepository extends JpaRepository<UserProfile, Integer>{
 
 }
 
