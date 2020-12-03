@@ -1,12 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.FeedbackQuestionType;
 
-
-@Repository
-public interface FeedbackQuestionTypeRepository extends JpaRepository<FeedbackQuestionType, Integer>{
+public interface FeedbackQuestionTypeRepository extends CrudRepository<FeedbackQuestionType, Integer>{
 
 }
 

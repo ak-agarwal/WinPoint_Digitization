@@ -1,10 +1,14 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 //checked
@@ -12,8 +16,6 @@ import lombok.Data;
 @Entity
 @Data
 public class EmployeeDetails {
-	@Id
-	private Integer employeeDetailsId;
 	private Integer userId;
 	private Double employeeSalary;
 	private String dateOfJoining;
@@ -25,12 +27,16 @@ public class EmployeeDetails {
 	@ManyToOne
 	private EmployeeCategory EmployeeCategory;
 	
-
+//	@OneToMany(targetEntity = EmployeeCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "employeeCategoryId", referencedColumnName = "employeeCategoryId")
+//	private List<EmployeeDetails> EmployeeDetails;
 	
 	
 	@ManyToOne
 	private UserProfile UserProfile;
 	
-	
+//	@OneToMany(targetEntity = EmployeeDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private List<EmployeeDetails> EmployeeDetails;
 	
 	}

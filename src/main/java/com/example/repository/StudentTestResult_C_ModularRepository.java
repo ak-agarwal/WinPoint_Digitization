@@ -1,12 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.StudentTestResult_C_Modular;
 
-
-@Repository
-public interface StudentTestResult_C_ModularRepository extends JpaRepository<StudentTestResult_C_Modular, Integer>{
+public interface StudentTestResult_C_ModularRepository extends CrudRepository<StudentTestResult_C_Modular, Integer>{
 
 }
 

@@ -1,10 +1,14 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -12,8 +16,7 @@ import lombok.Data;
 @Data
 public class ModularTestResult_C_TBC {
 
-	@Id
-	private Integer ModularTestResult_C_TBC_Id;
+	
 	private Integer userTestId;
 	private Integer qNumber;
 	private Integer questionId;
@@ -21,11 +24,21 @@ public class ModularTestResult_C_TBC {
 	private String isCorrect;
 	private Integer createdBy;
 	private Date createdDate;
-
+	
+	
+	
 	@ManyToOne
 	private UserTestDetails UserTestDetails;
-
+	
+//	@OneToMany(targetEntity = ModularTestResult_C_TBC.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+//	private List<ModularTestResult_C_TBC> ModularTestResult_C_TBC;
+	
+	
 	@ManyToOne
 	private TechnicalQuestionBank TechnicalQuestionBank;
-
+	
+//	@OneToMany(targetEntity = ModularTestResult_C_TBC.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
+//	private List<ModularTestResult_C_TBC> ModularTestResult_C_TBC;
 }

@@ -1,10 +1,8 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.ReminderType;
 
-@Repository
-public interface ReminderTypeRepository extends JpaRepository<ReminderType, Integer>{
+public interface ReminderTypeRepository extends CrudRepository<ReminderType, Integer>{
 
 }

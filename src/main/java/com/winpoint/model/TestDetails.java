@@ -30,28 +30,16 @@ public class TestDetails {
 	private Integer createdBy;
 	private Date createdDate;
 	
+//	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private List<UserProfile> userProfiles;	
 	
+	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<Course> userTestDetails;	
 	
-	@OneToMany(targetEntity = TestDifficulty.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
-	private List<TestDifficulty> TestDifficulty;
+	@ManyToOne(targetEntity = EvaluationType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
+	private List<EvaluationType> EvaluationType;	
 	
-	
-	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "testDetailsId", referencedColumnName = "testDetailsId")
-	private List<UserTestDetails> UserTestDetails;
-
-	
-	
-	
-	///////////////////////////
-
-	@ManyToOne
-	private Course Course;
-
-//	
-
-	@ManyToOne
-	private EvaluationType EvaluationType;
-
 }

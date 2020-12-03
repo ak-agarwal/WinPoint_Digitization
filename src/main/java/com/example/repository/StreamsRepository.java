@@ -1,11 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.Streams;
 
-@Repository
-public interface StreamsRepository extends JpaRepository<Streams, Integer>{
+public interface StreamsRepository extends CrudRepository<Streams, Integer>{
 
 
 }

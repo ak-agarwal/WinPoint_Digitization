@@ -1,12 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.RevenueType;
 
-
-@Repository
-public interface RevenueTypeRepository extends JpaRepository<RevenueType, Integer>{
+public interface RevenueTypeRepository extends CrudRepository<RevenueType, Integer>{
 
 }
 

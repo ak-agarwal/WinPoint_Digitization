@@ -1,12 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.StudentTestResultOperatingSystem_CRT;
 
-
-@Repository
-public interface StudentTestResultOperatingSystem_CRT_Repository extends JpaRepository<StudentTestResultOperatingSystem_CRT, Integer>{
+public interface StudentTestResultOperatingSystem_CRT_Repository extends CrudRepository<StudentTestResultOperatingSystem_CRT, Integer>{
 
 }
 

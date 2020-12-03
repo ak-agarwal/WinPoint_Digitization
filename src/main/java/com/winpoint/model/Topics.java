@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -27,39 +26,11 @@ public class Topics {
 	private Date createdDate;
 	private Integer topicDuration;
 	
+//	@ManyToOne(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
+//	private List<Topics> topics;	
 	
-	
-	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
-	
-	
-	@OneToMany(targetEntity = SoftSkillsQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-	private List<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
-	
-	
-	@OneToMany(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-	private List<TechnicalQuestionBank> TechnicalQuestionBank;
-	
-	@OneToMany(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-	private List<TestDifficulty> TestDifficulty;
-	
-	
-	/////////////////////////
-
-	
-	@ManyToOne
-	private Course Course;
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<Course> course;	
 }

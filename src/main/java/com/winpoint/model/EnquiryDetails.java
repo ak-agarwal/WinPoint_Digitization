@@ -1,10 +1,15 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -52,12 +57,16 @@ public class EnquiryDetails {
 	@ManyToOne
 	private TimeSlots TimeSlots;
 	
-	
+//	@OneToMany(targetEntity = EnquiryDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
+//	private List<EnquiryDetails> EnquiryDetails;
 	
 	
 	@ManyToOne
 	private SegmentType SegmentType;
 	
-	
+//	@OneToMany(targetEntity = EnquiryDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "segementTypeId", referencedColumnName = "segementTypeId")
+//	private List<EnquiryDetails> EnquiryDetails;
 	
 }

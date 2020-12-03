@@ -1,12 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.PaymentMode;
 
-
-@Repository
-public interface PaymentModeRepository extends JpaRepository<PaymentMode, Integer>{
+public interface PaymentModeRepository extends CrudRepository<PaymentMode, Integer>{
 
 }
 

@@ -1,10 +1,15 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -15,7 +20,7 @@ public class GeneralAptitudeQuestionBank {
 //	fk
 	@Id
 	private String questionId;
-	private String courseId;
+	private String courseId;	
 	private String topicId;
 	private String question;
 	private String option1;
@@ -29,14 +34,40 @@ public class GeneralAptitudeQuestionBank {
 	private String inCrt;
 	private String createdBy;
 	private Date createdDate;
-
+	
+//	@ManyToOne(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
+//	private List<GeneralAptitudeQuestionBank> generalAptitudeQuestionBank;
+	
+	
+	
+	
 	@ManyToOne
 	private Course Course;
-
+	
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	
+	
+	
+	
 	@ManyToOne
 	private Topics Topics;
-
+	
+	
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
+//	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	
+	
+	
 	@ManyToOne
 	private DifficultyLevel DifficultyLevel;
-
+	
+	
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
+//	private List<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	
 }

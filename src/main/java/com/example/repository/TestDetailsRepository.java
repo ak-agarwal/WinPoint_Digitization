@@ -1,12 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.TestDetails;
 
-
-@Repository
-public interface TestDetailsRepository extends JpaRepository<TestDetails, Integer>{
+public interface TestDetailsRepository extends CrudRepository<TestDetails, Integer>{
 
 }
 

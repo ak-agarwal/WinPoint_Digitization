@@ -1,11 +1,9 @@
 package com.example.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.ClientCategory;
 
-@Repository
-public interface ClientCategoryRepository extends JpaRepository<ClientCategory, Integer>{
+public interface ClientCategoryRepository extends CrudRepository<ClientCategory, Integer>{
 
 }

@@ -1,11 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.ModularTestResult_C_TBC;
 
-@Repository
-public interface ModularTestResult_C_TBC_Repository extends JpaRepository<ModularTestResult_C_TBC, Integer>{
+public interface ModularTestResult_C_TBC_Repository extends CrudRepository<ModularTestResult_C_TBC, Integer>{
 
 }
 

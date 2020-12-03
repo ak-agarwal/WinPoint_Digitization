@@ -1,5 +1,6 @@
 package com.winpoint.model;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -30,61 +30,16 @@ public class UserTestDetails {
 	private Date createdDate;
 	private Integer attempted;
 	private String evaluationDone;
-
-	@OneToMany(targetEntity = ModularTestResult_C_TBC.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<ModularTestResult_C_TBC> ModularTestResult_C_TBC;
-
-	@OneToMany(targetEntity = StudentTestResult_C_Modular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResult_C_Modular> StudentTestResult_C_Modular;
-
-	@OneToMany(targetEntity = StudentTestResult_CPP_CRT.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResult_CPP_CRT> StudentTestResult_CPP_CRT;
-
-	@ManyToOne(targetEntity = StudentTestResult_CPP_Modular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
-
-	@OneToMany(targetEntity = StudentTestResult_CPP_TBC.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResult_CPP_TBC> StudentTestResult_CPP_TBC;
-
+	
+	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
+	private List<UserProfile> UserProfiles;
+	
 	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResultComputerNetwork_CRT> StudentTestResultComputerNetwork_CRT;
-
-	@ManyToOne(targetEntity = StudentTestResultJava_CRT.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResultJava_CRT> StudentTestResultJava_CRT;
-
-	@ManyToOne(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResultJava_TBC> StudentTestResultJava_TBC;
-
-	@ManyToOne(targetEntity = StudentTestResultJavaModular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResultJavaModular> StudentTestResultJavaModular;
-
-	@OneToMany(targetEntity = StudentTestResultJavascriptModular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResultJavascriptModular> StudentTestResultJavascriptModular;
-
-	@ManyToOne(targetEntity = StudentTestResultOperatingSystem_CRT.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
-
-	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-	private List<TestFeedback> TestFeedback;
-
-	////////////////////////////
-
-	@ManyToOne
-	private UserProfile UserProfile;
-
-	@ManyToOne
-	private TestDetails TestDetails;
-
+	private List<UserTestDetails> UserTestDetail;
+	
+	@OneToMany(targetEntity = TestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "testDetailsId", referencedColumnName = "testDetailsId")
+	private List<TestDetails> TestDetails;
 }

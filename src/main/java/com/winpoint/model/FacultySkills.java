@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -17,23 +16,19 @@ import lombok.Data;
 @Data
 public class FacultySkills {
 //	checked
-
-	@Id
-	private Integer facultySkillsId;
 	private Integer facultyUserId;
 	private String skillSetId;
 	private Integer createdBy;
 	private Date createdDate;
 	private String segmentTypeId;
 	private String timeSlotsId;
-
-	@OneToMany(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "facultyUserId", referencedColumnName = "facultyId")
-	private List<BatchDetails> BatchDetails;
-
-	/////////////
-
+	
+	
+	jnf4
 	@ManyToOne
 	private UserProfile UserProfile;
-
+	
+	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "facultyUserId", referencedColumnName = "user")
+	private List<UserProfile> employeeCategories;
 }

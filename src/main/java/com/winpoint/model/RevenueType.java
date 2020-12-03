@@ -1,13 +1,7 @@
 package com.winpoint.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -19,11 +13,8 @@ public class RevenueType {
 	private Integer revenueTypeId;
 	private String revenueTypeName;
 
-	
-	@OneToMany(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
-	private List<RevenueDetail> RevenueDetail;
-	
-	
-//////////////////////
+//	@ManyToOne(targetEntity = RevenueType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
+//	private List<RevenueType> revenueType;
+
 }

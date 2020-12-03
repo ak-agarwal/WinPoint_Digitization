@@ -1,12 +1,9 @@
 package com.example.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.winpoint.model.GeneralAptitudeQuestionBank;
 
-
-@Repository
-public interface GeneralAptitudeQuestionBankRepository extends JpaRepository<GeneralAptitudeQuestionBank, Integer>{
+public interface GeneralAptitudeQuestionBankRepository extends CrudRepository<GeneralAptitudeQuestionBank, Integer>{
 
 }
 
