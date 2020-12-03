@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -49,24 +48,16 @@ public class EnquiryDetails {
 	private String suggestion;
 	private Integer activeStatus;
 	
+	@ManyToOne(targetEntity = EnquiryDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "enquiryId", referencedColumnName = "enquiryId")
+	private List<EnquiryDetails> enquiryDetails;
 	
-
+	@ManyToOne(targetEntity = TimeSlots.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
+	private List<TimeSlots> timeSlots;
 	
-	
-	
-	@ManyToOne
-	private TimeSlots TimeSlots;
-	
-//	@OneToMany(targetEntity = EnquiryDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-//	private List<EnquiryDetails> EnquiryDetails;
-	
-	
-	@ManyToOne
-	private SegmentType SegmentType;
-	
-//	@OneToMany(targetEntity = EnquiryDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "segementTypeId", referencedColumnName = "segementTypeId")
-//	private List<EnquiryDetails> EnquiryDetails;
+	@ManyToOne(targetEntity = SegmentType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "segementTypeId", referencedColumnName = "segementTypeId")
+	private List<SegmentType> segmentType;
 	
 }

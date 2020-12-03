@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -26,11 +26,11 @@ public class Topics {
 	private Date createdDate;
 	private Integer topicDuration;
 	
-//	@ManyToOne(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-//	private List<Topics> topics;	
+	@ManyToOne(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
+	private List<Topics> topics;	
 	
-	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
 	private List<Course> course;	
 }

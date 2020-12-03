@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -17,7 +16,6 @@ import lombok.Data;
 public class StudentTestResult_C_Modular {
 //	checked
 //	fk
-	
 	private Integer userTestId;
 	private Integer qNumber;
 	private Integer questionId;
@@ -26,25 +24,11 @@ public class StudentTestResult_C_Modular {
 	private Integer createdBy;
 	private Date createdDate;
 	
-	
-	
-	@ManyToOne
-	private UserTestDetails UserTestDetails;
-	
-	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 	private List<UserTestDetails> userTestDetails;
 
-	
-	/////
-	
-	
-	
-	@ManyToOne
-	private TechnicalQuestionBank TechnicalQuestionBank;
-	
-	
-	@OneToMany(targetEntity = TechnicalQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = TechnicalQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
 	private List<TechnicalQuestionBank> technicalQuestionBank;
 

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -34,19 +34,19 @@ public class TechnicalQuestionBank {
 	private String createdBy;
 	private Date createdDate;	
 	
-//	@ManyToOne(targetEntity = SoftSkillsQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
-//	private List<SoftSkillsQuestionBank> softSkillsQuestionBank;
+	@ManyToOne(targetEntity = SoftSkillsQuestionBank.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
+	private List<SoftSkillsQuestionBank> softSkillsQuestionBank;
 
-	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
 	private List<Course> course;
 
-	@OneToMany(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = Topics.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
 	private List<Topics> topics;
 
-	@OneToMany(targetEntity = DifficultyLevel.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = DifficultyLevel.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 	private List<DifficultyLevel> difficultyLevel;
 

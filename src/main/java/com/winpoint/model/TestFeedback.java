@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -16,7 +17,7 @@ import lombok.Data;
 public class TestFeedback {
 //	checked
 //	fk redo
-	
+	@Id
 	private Integer userTestId;
 	private Integer feedbackQuestionId;
 	private String response;

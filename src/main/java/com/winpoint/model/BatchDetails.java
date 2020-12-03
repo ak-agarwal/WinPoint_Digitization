@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -18,7 +17,7 @@ import lombok.Data;
 @Entity
 @Data
 public class BatchDetails {
-//	checked//
+//	checked
 	@Id
 	private Integer batchId;
 	private Integer courseId;	
@@ -35,34 +34,21 @@ public class BatchDetails {
 	private Integer totalNumberOfLectures;//
 	private Integer segmentTypeId;//
 
-//	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
-//	private List<BatchDetails> batchDetails;
-	
-	@ManyToOne
-	private Course course;
-	
-//	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-//	private List<BatchDetails> BatchDetails;
-	//          
-	
-	
-	@ManyToOne
-	private FacultySkills facultySkills;
-	
-//	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "facultyUserId", referencedColumnName = "facultyId")
-//	private List<BatchDetails> BatchDetails;
-	
-	
-	
-	@ManyToOne
-	private SegmentType segmentType;
-	
 	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	private List<BatchDetails> batchDetails;
+	
+	@OneToMany(targetEntity = Course.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+	private List<Course> courses;
+	
+	@OneToMany(targetEntity = FacultySkills.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "facultyUserId", referencedColumnName = "facultyId")
+	private List<FacultySkills> facultyTypes;
+	
+	@OneToMany(targetEntity = SegmentType.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private List<BatchDetails> BatchDetails;
+	private List<SegmentType> segmentTypes;
 }
 
 

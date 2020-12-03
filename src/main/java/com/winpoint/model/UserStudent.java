@@ -7,7 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -24,12 +24,12 @@ public class UserStudent {
 	private Integer createdBy;
 	private Date createdDate;
 	
-	@OneToMany(targetEntity = ClientCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = ClientCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "clientCategoryId", referencedColumnName = "clientCategoryId")
 	private List<ClientCategory> ClientCategories;
 	
 	
-	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private List<UserProfile> UserProfiles;
 	

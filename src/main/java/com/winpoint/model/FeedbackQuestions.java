@@ -9,14 +9,13 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.Data;
 
 @Entity
 @Data
 public class FeedbackQuestions {
-//	checked//
+//	checked
 	@Id
 	private Integer feedbackQuestionId;
 	private Integer feedbackCategoryId;
@@ -25,23 +24,15 @@ public class FeedbackQuestions {
 	private Integer createdBy;
 	private Date createdDate;
 	
+	@ManyToOne(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
+	private List<FeedbackQuestions> feedbackQuestions;
 	
-//	@ManyToOne(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
-//	private List<FeedbackQuestions> feedbackQuestions;
+	@ManyToOne(targetEntity = FeedbackCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
+	private List<FeedbackCategory> feedbackCategories;
 	
-	@ManyToOne
-	private FeedbackCategory FeedbackCategory;
-	
-//	@OneToMany(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
-//	private List<FeedbackQuestions> FeedbackQuestions;
-	
-	
-	@ManyToOne
-	private FeedbackQuestionType FeedbackQuestionType;
-	
-//	@OneToMany(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackQuestionTypeId", referencedColumnName = "feedbackQuestionTypeId")
-//	private List<FeedbackQuestions> FeedbackQuestions;
+	@ManyToOne(targetEntity = FeedbackQuestionType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedbackQuestionTypeId", referencedColumnName = "feedbackQuestionTypeId")
+	private List<FeedbackQuestionType> feedbackQuestionTypes;
 }

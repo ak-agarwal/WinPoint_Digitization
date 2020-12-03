@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -25,13 +25,12 @@ public class ToolTips {
 	private Integer createdBy;
 	private Date createdDate;
 	
-	
-	@OneToMany(targetEntity = CourseType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = CourseType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private List<CourseType> CourseTypes;	
 	
-//	@On(targetEntity = ToolTips.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "toolTipId", referencedColumnName = "toolTipId")
-//	private List<ToolTips> toolTips;	
+	@ManyToOne(targetEntity = ToolTips.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "toolTipId", referencedColumnName = "toolTipId")
+	private List<ToolTips> toolTips;	
 
 }
